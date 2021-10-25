@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+.color{
+	width: 40px;
+	height: 40px;
+	border: 1px solid;
+	display: inline-block;
+}
+
+.color:nth-of-type(1) {
+	background-color: black;
+}
+
+.color:nth-of-type(2) {
+	background-color: cadetblue;
+}
+
+.color:nth-of-type(3) {
+	background-color: red;
+}
+
+.color:nth-of-type(4) {
+	background-color: purple;
+}
+
+#pixel-board{
+	width: calc(50 * 5px);
+	margin-top: 20px;
+	padding-left: 20px;
+}
+
+.pixel{
+	width: 40px;
+	height: 40px;
+	border: 1px solid;
+	float: left;
+	background-color: white;
+}
