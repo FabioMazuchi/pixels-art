@@ -12,7 +12,19 @@ criaQuadroPixel();
 
 window.onload = function(){
 		let cores = document.querySelectorAll('.color');
-		let selecionada = 'selected';
 		cores[0].classList.add('selected');
-		console.log(cores);
+	
+		for(let c of cores){
+			c.addEventListener('click', function () {
+				for (let index = 0; index < cores.length; index++) {
+					if(cores[index].classList.length > 1){
+						cores[index].classList.remove('selected');
+						console.log(cores[index]);
+					}else{
+						this.classList.add('selected');
+					}
+				}
+			});
+		}
 }
+
