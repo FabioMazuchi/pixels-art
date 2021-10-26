@@ -1,5 +1,5 @@
 * {
-	margin: 0;
+  margin: 0;
 	padding: 0;
 }
 
@@ -7,13 +7,14 @@
 	clear: both;
 }
 
-.color{
+.color {
 	width: 40px;
 	height: 40px;
 	border: 1px solid;
 	display: inline-block;
 	font-size: 8px;
 	color: transparent;
+	border: 1px solid black;
 }
 
 .color:nth-of-type(1) {
@@ -32,13 +33,13 @@
 	background-color: purple;
 }
 
-#pixel-board{
+#pixel-board {
 	width: calc(50 * 5px);
 	margin-top: 20px;
 	padding-left: 20px;
 }
 
-.pixel{
+.pixel {
 	color: transparent;
 	width: 40px;
 	height: 40px;
