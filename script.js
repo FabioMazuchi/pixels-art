@@ -61,3 +61,16 @@ function pintarPixel(){
 }
 
 pintarPixel();
+
+function clear() {
+	let btn = document.querySelector('#clear-board');
+	let pixels = document.querySelectorAll('.pixel');
+
+	btn.addEventListener('click', function(){
+		for(p of pixels){
+			p.style.backgroundColor = 'white';
+		}
+	});
+}
+
+clear();
