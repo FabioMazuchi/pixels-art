@@ -13,6 +13,7 @@
 	border: 1px solid;
 	display: inline-block;
 	font-size: 8px;
+	color: transparent;
 }
 
 .color:nth-of-type(1) {
@@ -38,9 +39,10 @@
 }
 
 .pixel{
+	color: transparent;
 	width: 40px;
 	height: 40px;
-	border: 1px solid;
+	border: 1px solid black;
 	float: left;
 	background-color: white;
 }
