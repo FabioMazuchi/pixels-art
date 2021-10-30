@@ -1,53 +1,61 @@
 * {
   margin: 0;
-	padding: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .clear {
-	clear: both;
+  clear: both;
+}
+
+body {
+	padding-top: 40px;
+  text-align: center;
+	background-color: burlywood;
 }
 
 .color {
-	width: 40px;
-	height: 40px;
-	border: 1px solid;
-	display: inline-block;
-	font-size: 8px;
-	color: transparent;
-	border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  font-size: 8px;
+  color: transparent;
+  border: 1px solid black;
 }
 
-.color:nth-of-type(1) {
-	background-color: black;
+.color:nth-of-type( 1 ) {
+  background-color: black;
 }
 
-.color:nth-of-type(2) {
-	background-color: cadetblue;
+.color:nth-of-type( 2 ) {
+  background-color: cadetblue;
 }
 
-.color:nth-of-type(3) {
-	background-color: red;
+.color:nth-of-type( 3 ) {
+  background-color: red;
 }
 
-.color:nth-of-type(4) {
-	background-color: purple;
-}
-
-#pixel-board {
-	width: calc(50 * 5px);
-	margin-top: 20px;
-	padding-left: 20px;
-}
-
-.pixel {
-	color: transparent;
-	width: 40px;
-	height: 40px;
-	border: 1px solid black;
-	float: left;
-	background-color: white;
+.color:nth-of-type( 4 ) {
+  background-color: purple;
 }
 
 button {
-	margin-top: 10px;	
+  padding: 4px 8px;
+  font-size: 15px;
+ margin-top: 10px;
+  border: 1px solid black;
+}
+
+#pixel-board {
+  width: calc(40 * 5px);
+  margin: 20px auto;
+  background-color: aqua;
+}
+
+.pixel {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  float: left;
+  background-color: white;
 }

@@ -1,76 +1,81 @@
-let quadroPixel = document.querySelector('#pixel-board');
+const quadroPixel = document.querySelector('#pixel-board');
+const btn = document.querySelector('#generate-board');
 
-function criaQuadroPixel() {
-	for (let i = 0; i < 25; i++) {
-		let divPixel = document.createElement('div');
-		divPixel.className = 'pixel';
-		divPixel.innerText = i;
-		quadroPixel.appendChild(divPixel);
-	}
+function criaQuadroPixel(size) {
+  for (let i = 0; i < size; i += 1) {
+    const linha = document.createElement('div');
+    linha.classList.add('linha');
+    for (let n = 0; n < size; n += 1) {
+      const pixel = document.createElement('div');
+      pixel.classList.add('pixel');
+      linha.appendChild(pixel);
+    }
+    const clear = document.createElement('div');
+    clear.classList.add('clear');
+    linha.appendChild(clear);
+    quadroPixel.appendChild(linha);
+  }
 }
 
-criaQuadroPixel();
+function pintarPixel() {
+  const pixels = document.querySelectorAll('.pixel');
+  let corSelecionada = selecionaCor();
+	let corAtual;
 
-function adicionaClsseSelected(){
-	let cores = document.querySelectorAll('.color');
-	cores[0].classList.add('selected');
+  for (let i = 0; i < pixels.length; i += 1) {
+    pixels[i].addEventListener('click', function () {
+      const selecionado = this.innerText;
+      const estilo = window.getComputedStyle(pixels[i]);
+      corAtual = estilo.backgroundColor;
 
-	for (let c of cores) {
-		c.addEventListener('click', function () {
-			let clicou = this.innerText;
-			this.classList.add('selected');
-
-			for (let index = 0; index < cores.length; index += 1) {
-				if (cores[index].innerText !== clicou) {
-					cores[index].classList.remove('selected');
-					selecionaCor();
-					pintarPixel();
-				}
-			}
-
-			return clicou;
-		});
-	}
+      if (i !== selecionado) {
+        pixels[i].style.backgroundColor = corSelecionada;
+      } else {
+        pixels[i].style.backgroundColor = corAtual;
+      }
+    });
+  }
 }
 
-adicionaClsseSelected();
-
-function selecionaCor(){
-	let selecionada = document.querySelector('.selected');
-	return selecionada.innerHTML;
+function adicionaClasseSelected() {
+  const cores = document.querySelectorAll('.color');
+  cores[0].classList.add('selected');
+  for (let i = 0; i < cores.length; i += 1) {
+    cores[i].addEventListener('click', function () {
+      const clicou = this.innerText;
+      this.classList.add('selected');
+      for (let index = 0; index < cores.length; index += 1) {
+        if (cores[index].innerText !== clicou) {
+          cores[index].classList.remove('selected');
+          selecionaCor();
+          pintarPixel();
+        }
+      }
+      return clicou;
+    });
+  }
 }
 
-
-function pintarPixel(){
-	let pixels = document.querySelectorAll('.pixel');
-	let corSelecionada = selecionaCor();
-	
-	for(let i = 0; i < pixels.length; i+=1){
-		pixels[i].addEventListener('click', function(){
-			let selecionado = this.innerText;
-			let estilo = window.getComputedStyle(pixels[i]);
-			corAtual = estilo.backgroundColor;
-
-			if(i !== selecionado){
-				pixels[i].style.backgroundColor = corSelecionada;
-			}else{
-				pixels[i].style.backgroundColor = corAtual;
-			}
-		});
-	}
+function selecionaCor() {
+  let selecionada = document.querySelector('.selected');
+  return selecionada.innerHTML;
 }
 
-pintarPixel();
 
 function clear() {
-	let btn = document.querySelector('#clear-board');
-	let pixels = document.querySelectorAll('.pixel');
+  const btn = document.querySelector('#clear-board');
+  const pixels = document.querySelectorAll('.pixel');
 
-	btn.addEventListener('click', function(){
-		for(p of pixels){
-			p.style.backgroundColor = 'white';
-		}
-	});
+  btn.addEventListener('click', function () {
+    for (let i = 0; i < pixels.length; i += 1) {
+      pixels[i].style.backgroundColor = 'white';
+    }
+  });
 }
 
-clear();
+window.onload = function () {
+	adicionaClasseSelected();
+  criaQuadroPixel(5);
+  clear();
+  pintarPixel();
+}
