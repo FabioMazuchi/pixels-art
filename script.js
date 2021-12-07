@@ -2,6 +2,7 @@ const quadroPixel = document.querySelector('#pixel-board');
 const btn = document.querySelector('#generate-board');
 const colorPallet = document.getElementsByClassName('color');
 const pixels = document.getElementsByClassName('pixel');
+const btnLimpar = document.querySelector('#clear-board');
 
 const criarPixels = (qtd) => {
   for (let i = 0; i < qtd * qtd; i += 1) {
@@ -29,9 +30,18 @@ const addEvent = (array, callback) => {
 };
 
 const pintarQuadro = ({ target }) => {
-	const sel = document.querySelector('.selected').innerHTML;
-	target.style.backgroundColor = `${sel}`;
+  const atual = target;
+  const sel = document.querySelector('.selected').innerHTML;
+  atual.style.backgroundColor = `${sel}`;
 };
+
+const limparQuadro = () => {
+  for (let i = 0; i < pixels.length; i++) {
+    pixels[i].style.backgroundColor = 'white';
+  }
+};
+
+btnLimpar.addEventListener('click', limparQuadro);
 
 addEvent(colorPallet, addRemoveClassSelected);
 addEvent(pixels, pintarQuadro);
