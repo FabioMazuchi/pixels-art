@@ -1,6 +1,17 @@
 const quadroPixel = document.querySelector('#pixel-board');
 const btn = document.querySelector('#generate-board');
 const colorPallet = document.getElementsByClassName('color');
+const pixels = document.getElementsByClassName('pixel');
+
+const criarPixels = (qtd) => {
+  for (let i = 0; i < qtd * qtd; i += 1) {
+    const div = document.createElement('div');
+    div.classList.add('pixel');
+    quadroPixel.appendChild(div);
+  }
+};
+
+criarPixels(5);
 
 const addRemoveClassSelected = ({ target }) => {
   for (let i = 0; i < colorPallet.length; i += 1) {
@@ -11,27 +22,23 @@ const addRemoveClassSelected = ({ target }) => {
   target.classList.add('selected');
 };
 
-const addEvent = () => {
-  for (let i = 0; i < colorPallet.length; i += 1) {
-    colorPallet[i].addEventListener('click', addRemoveClassSelected);
+const addEvent = (array, callback) => {
+  for (let i = 0; i < array.length; i += 1) {
+    array[i].addEventListener('click', callback);
   }
 };
 
-addEvent();
-
-const criarPixels = (qtd) => {
-  for (let i = 0; i < qtd * qtd; i += 1) {
-    const div = document.createElement('div');
-    div.classList.add('pixel');
-    quadroPixel.appendChild(div);
-  }
+const pintarQuadro = ({ target }) => {
+	const sel = document.querySelector('.selected').innerHTML;
+	target.style.backgroundColor = `${sel}`;
 };
+
+addEvent(colorPallet, addRemoveClassSelected);
+addEvent(pixels, pintarQuadro);
 
 const addClassSelectedtInicial = () => {
   colorPallet[0].classList.add('selected');
 };
-
-criarPixels(5);
 
 window.onload = addClassSelectedtInicial;
 
