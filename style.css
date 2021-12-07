@@ -9,6 +9,8 @@
 }
 
 body {
+  display: flex;
+  flex-direction: column;
 	padding-top: 40px;
   text-align: center;
 	background-color: burlywood;
@@ -40,22 +42,23 @@ body {
 }
 
 button {
+  width: 100px;
   padding: 4px 8px;
   font-size: 15px;
- margin-top: 10px;
+  margin: 10px auto;
   border: 1px solid black;
 }
 
 #pixel-board {
-  width: calc(40 * 5px);
+  width: calc(40px * 5);
+  display: flex;
+  flex-wrap: wrap;
   margin: 20px auto;
-  background-color: aqua;
 }
 
 .pixel {
   width: 40px;
   height: 40px;
   border: 1px solid black;
-  float: left;
   background-color: white;
 }
