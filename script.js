@@ -1,18 +1,24 @@
 const quadroPixel = document.querySelector('#pixel-board');
-const btn = document.querySelector('#generate-board');
 const colorPallet = document.getElementsByClassName('color');
 const pixels = document.getElementsByClassName('pixel');
 const btnLimpar = document.querySelector('#clear-board');
+const input = document.querySelector('#board-size');
+const btnTamanho = document.querySelector('#generate-board');
+const size = input.value;
 
-const criarPixels = (qtd) => {
-  for (let i = 0; i < qtd * qtd; i += 1) {
+const alteraTamanhoCss = (tamanho) => {
+  quadroPixel.style.width = `calc(40px * ${tamanho})`;
+};
+
+const criarPixels = (tamanho) => {
+  for (let i = 0; i < tamanho * tamanho; i += 1) {
     const div = document.createElement('div');
     div.classList.add('pixel');
     quadroPixel.appendChild(div);
   }
 };
 
-criarPixels(5);
+criarPixels(size);
 
 const addRemoveClassSelected = ({ target }) => {
   for (let i = 0; i < colorPallet.length; i += 1) {
@@ -41,6 +47,23 @@ const limparQuadro = () => {
   }
 };
 
+const alteraTamanho = () => {
+  const tam = Number(input.value);
+  console.log(tam);
+
+  if (tam === 0 || tam === 5) {
+    alert('Board inválido!');
+  } else {
+    quadroPixel.innerHTML = '';
+    criarPixels(tam);
+    alteraTamanhoCss(tam);
+    addEvent(colorPallet, addRemoveClassSelected);
+    addEvent(pixels, pintarQuadro);
+    console.log('clicou');
+  }
+};
+
+btnTamanho.addEventListener('click', alteraTamanho);
 btnLimpar.addEventListener('click', limparQuadro);
 
 addEvent(colorPallet, addRemoveClassSelected);
