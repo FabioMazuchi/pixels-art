@@ -11,9 +11,9 @@
 body {
   display: flex;
   flex-direction: column;
-	padding-top: 40px;
+  padding-top: 40px;
   text-align: center;
-	background-color: burlywood;
+  background-color: burlywood;
 }
 
 .color {
