@@ -4,16 +4,17 @@
   box-sizing: border-box;
 }
 
-.clear {
-  clear: both;
+body { 
+  justify-content: center;
+  flex-direction: column;
+  display: flex; 
+  text-align: center;
+  background-image: url(./images/fundo1.png);
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  padding-top: 40px;
-  text-align: center;
-  background-color: burlywood;
+h1 {
+  margin-top: 10px;
+  color: white;
 }
 
 .color {
@@ -39,6 +40,10 @@ body {
 
 .color:nth-of-type( 4 ) {
   background-color: purple;
+}
+input {
+  padding: 4px 8px;
+  width: 65px;
 }
 
 button {
